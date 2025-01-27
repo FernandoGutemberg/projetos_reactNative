@@ -1,54 +1,45 @@
 import React from 'react';
-import {SectionList, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Button, View, Text, Alert} from 'react-native';
+import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
+
+
+const App = () => (
+  <SafeAreaProvider>
+    <SafeAreaView style={styles.container}>
+      <View>
+        <Text style={styles.title}>PEGA LOCALIZAÇÃO</Text>
+        <Text style={styles.title}>
+          VAMOS PEGAR LOCALIZAÇÃO AQUI
+        </Text>
+        <Button
+          title="BUSCAR"
+          onPress={() => Alert.alert('A LOCALIZAÇÃO VAI APARECER AQUI')}
+        />
+      </View>
+
+  
+    </SafeAreaView>
+  </SafeAreaProvider>
+);
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 22,
+    justifyContent: 'center',
+    marginHorizontal: 16,
   },
-  sectionHeader: {
-    paddingTop: 2,
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingBottom: 2,
-    fontSize: 14,
-    fontWeight: 'bold',
-    backgroundColor: 'rgba(247,247,247,1.0)',
+  title: {
+    textAlign: 'center',
+    marginVertical: 8,
   },
-  item: {
-    padding: 10,
-    fontSize: 18,
-    height: 44,
+  fixToText: {
+    flexDirection: 'row',
+  },
+  separator: {
+    marginVertical: 8,
+    borderBottomColor: '#737373',
+    borderBottomWidth: StyleSheet.hairlineWidth,
   },
 });
 
-const SectionListBasics = () => {
-  return (
-    <View style={styles.container}>
-      <SectionList
-        sections={[
-          {title: 'D', data: ['Devin', 'Dan', 'Dominic']},
-          {
-            title: 'J',
-            data: [
-              'Jackson',
-              'James',
-              'Jillian',
-              'Jimmy',
-              'Joel',
-              'John',
-              'Julie',
-            ],
-          },
-        ]}
-        renderItem={({item}) => <Text style={styles.item}>{item}</Text>}
-        renderSectionHeader={({section}) => (
-          <Text style={styles.sectionHeader}>{section.title}</Text>
-        )}
-        keyExtractor={item => `basicListEntry-${item}`}
-      />
-    </View>
-  );
-};
-
-export default SectionListBasics;
+export default App;
